@@ -12,13 +12,10 @@ public class Question1 {
 		for (int num : numbers) {
 			hNumbers.add(num);
 		}
-		//for (int i=0; i<hNumbers.size(); i++) {
 		Iterator<Integer> i = hNumbers.iterator();
 		while(i.hasNext())	{
 			total=total+i.next();
-			//System.out.println(total);
 		}
-		System.out.println(total);
 		return total;
 	}
 }

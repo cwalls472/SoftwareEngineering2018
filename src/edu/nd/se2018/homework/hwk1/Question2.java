@@ -16,12 +16,10 @@ public class Question2 {
 			hWords.put(word,1);
 			}
 		}
-		System.out.println(hWords);
 		String[] stopWords = stopwords.split(" ");
 		for (String word : stopWords) {
 			hWords.remove(word);
 		}
-		System.out.println(hWords);
 		int maxVal = Collections.max(hWords.values());
 		String maxWord = "";
 		int counter = 0;
