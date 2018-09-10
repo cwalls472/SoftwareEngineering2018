@@ -1,7 +1,6 @@
 package edu.nd.se2018.homework.hwk2;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+//import org.junit.Test;
 
 import org.junit.jupiter.api.Test;
 import edu.nd.se2018.homework.hwk2.strategy.*;
@@ -16,6 +15,7 @@ class Test1 {
 		race.enrollHorse("Joe",2,25,new EarlySprintStrategy());
 		race.enrollHorse("Blizzard",3,25,new SlowStartStrategy());
 		race.enrollHorse("Flicker",4,25,new SteadyRunStrategy());
+		race.startRace();
 	}
 
 }

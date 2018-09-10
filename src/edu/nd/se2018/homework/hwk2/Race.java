@@ -15,5 +15,9 @@ public class Race {
 	
 	public void startRace() {
 		System.out.println(horseArray.size());
+		System.out.println(horseArray.get(0).name);
+		System.out.println(horseArray.get(0).maxSpeed);
+		horseArray.get(1).strategy.useStrategy();
+		
 	}
 }
