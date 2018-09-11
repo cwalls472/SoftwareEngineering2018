@@ -8,6 +8,7 @@ public class Race {
 	int horseAmount = 0;
 	String winner;
 	Boolean cont = true;
+	int counter=0;
 	
 	public Race() {}
 	
@@ -15,11 +16,19 @@ public class Race {
 		horseArray.add(new Horse(n,num,ms,s));
 	}
 	
+	public void changeStrategy(int num, Strategy s) {
+		horseArray.get(num).changeStrategy(s);
+	}
+	
 	public void startRace() {
-		System.out.println(horseArray.size());
-		System.out.println(horseArray.get(0).name);
-		System.out.println(horseArray.get(0).maxSpeed);
 		while (cont) {
+			if (counter == 5) {
+				for (int i=0;i<horseArray.size();i++) {
+					System.out.println(horseArray.get(i).name + " has run " + horseArray.get(i).curpos);
+					counter=0;
+
+				}
+			}
 			for (int i=0;i<horseArray.size();i++) {
 				horseArray.get(i).run();
 				if (horseArray.get(i).getpos()>=10) {
@@ -28,6 +37,7 @@ public class Race {
 					break;
 				}
 			}
+			counter++;
 		}
 		System.out.println("The winner is " + winner);
 	}

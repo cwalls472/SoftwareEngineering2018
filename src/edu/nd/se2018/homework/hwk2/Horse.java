@@ -1,5 +1,4 @@
 package edu.nd.se2018.homework.hwk2;
-import java.util.*;
 import edu.nd.se2018.homework.hwk2.strategy.*;
 
 public class Horse {
@@ -19,11 +18,14 @@ public class Horse {
 	
 	public void run() {
 		curpos = strategy.useStrategy(curpos, maxSpeed);
-		System.out.println(name + " " + curpos);
 	}
 	
 	public double getpos() {
 		return curpos;
+	}
+	
+	public void changeStrategy(Strategy s) {
+		strategy = s;
 	}
 	
 }
