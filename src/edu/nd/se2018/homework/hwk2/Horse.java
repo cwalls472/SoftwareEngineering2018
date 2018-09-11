@@ -7,10 +7,23 @@ public class Horse {
 	public String name;
 	public int maxSpeed;
 	public Strategy strategy;
+	public double curpos;
+	
 	public Horse(String n, int num, int ms, Strategy s) {
 		name = n;
 		number = num;
 		maxSpeed = ms;
 		strategy = s;
+		curpos = 0;
 	}
+	
+	public void run() {
+		curpos = strategy.useStrategy(curpos, maxSpeed);
+		System.out.println(name + " " + curpos);
+	}
+	
+	public double getpos() {
+		return curpos;
+	}
+	
 }
