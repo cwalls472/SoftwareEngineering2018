@@ -127,9 +127,8 @@ public class CrossingGate extends Observable implements Observer{
 				}
 			} else if (train.getTrainDir()==1) {
 				if(train.getVehicleX() > triggerPoint){
-					if(getTrafficCommand()!="STOP")
+					if(getTrafficCommand()!="STOP") // basically says that if someone else already told this gate to go down, then the current train doesn't override that.
 						currentGateState.leaveStation();
-					
 				}
 				else if (train.getVehicleX() > exitPoint)
 					currentGateState.approachStation();
