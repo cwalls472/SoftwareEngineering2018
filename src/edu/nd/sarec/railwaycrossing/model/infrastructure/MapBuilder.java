@@ -40,6 +40,7 @@ public class MapBuilder {
 	
 	private void buildTracks(){
 		tracks.put("Royal", new RailwayTracks(new Point(0,500),new Point(1200,500)));
+		tracks.put("Jubilee", new RailwayTracks(new Point(0,550),new Point(1200,550)));
 	}
 	
 	private void assignGatesToRoads(){
@@ -65,6 +66,6 @@ public class MapBuilder {
 	}
 	
 	public RailwayTracks getTrack(String name){
-		return tracks.get("Royal");
+		return tracks.get(name);
 	}
 }
