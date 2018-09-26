@@ -119,11 +119,22 @@ public class CrossingGate extends Observable implements Observer{
 	public void update(Observable o, Object arg) {
 		if (o instanceof Train){
 			Train train = (Train)o;
-			if (train.getVehicleX() < exitPoint)
-				currentGateState.leaveStation();
-			else if(train.getVehicleX() < triggerPoint){
-				currentGateState.approachStation();
-			} 
+			if (train.getTrainDir()==0) {
+				if (train.getVehicleX() < exitPoint)
+					currentGateState.leaveStation();
+				else if(train.getVehicleX() < triggerPoint){
+					currentGateState.approachStation();
+				}
+			} else if (train.getTrainDir()==1) {
+				if(train.getVehicleX() > triggerPoint){
+					if(getTrafficCommand()!="STOP")
+						currentGateState.leaveStation();
+					
+				}
+				else if (train.getVehicleX() > exitPoint)
+					currentGateState.approachStation();
+
+			}
 		}	
 	}
 }

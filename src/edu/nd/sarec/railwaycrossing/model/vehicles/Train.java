@@ -18,11 +18,13 @@ public class Train extends Observable implements IVehicle{
 	private Image img;
 	private ImageView imgView;
 	private int trainLength = 35;
+	private int direction = 0;
 	
-	public Train(int x, int y){
+	public Train(int x, int y, int dir){
 		this.currentX = x;
 		this.currentY = y;
 		originalX = x;
+		direction = dir;
 		img = new Image("images\\Train.PNG",120,trainLength,false,false);
 		imgView = new ImageView(img);
 		imgView.setX(currentX);
@@ -37,18 +39,33 @@ public class Train extends Observable implements IVehicle{
 		return currentY;
 	}
 	
+	public int getTrainDir() {
+		return direction;
+	}
+	
 	public void move(){
-		currentX-=2;
+		if (direction == 0)
+			currentX-=2;
+		else if (direction == 1)
+			currentX+=2;
 		imgView.setX(currentX);
 		setChanged();
 		notifyObservers();
 	}
 	
 	public boolean offScreen(){
-		if (currentX < -200)
-			return true;
-		else
-			return false;				
+		if (direction==0) {
+			if (currentX < -200)
+				return true;
+			else
+				return false;
+		}
+		else {
+			if (currentX > 1400)
+				return true;
+			else
+				return false;
+		}
 	}
 	
 	public void reset(){

@@ -42,12 +42,12 @@ public class Simulation extends Application{
 				
 		// Train
 		RailwayTracks track = mapBuilder.getTrack("Royal");
-		Train train = new Train(track.getEndX()+100,track.getEndY()-25);
+		Train train = new Train(track.getEndX()+100,track.getEndY()-25,0);
 		root.getChildren().add(train.getImageView());
 		
 		// Train 2
 		RailwayTracks track2 = mapBuilder.getTrack("Jubilee");
-		Train train2 = new Train(track2.getEndX()+100,track2.getEndY()-25);
+		Train train2 = new Train(track2.getStartX()-100,track2.getEndY()-25,1);
 		root.getChildren().add(train2.getImageView());
 		
 		for(CrossingGate gate: mapBuilder.getAllGates()) {
