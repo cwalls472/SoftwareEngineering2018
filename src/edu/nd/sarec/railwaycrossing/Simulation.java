@@ -103,6 +103,42 @@ public class Simulation extends Application{
 		}
 	}
 	
+	private void moveCarsToEast() {
+		Road road1 = mapBuilder.getRoadsWithName().get("Western Highway");
+		Road road2 = mapBuilder.getRoadsWithName().get("EastWest");
+		ArrayList<Car> cars1 = road1.getCars();
+		ArrayList<Car> cars2 = road2.getCars();
+		Car changingCar;
+		for (int i=0; i< cars1.size(); i++) {
+			if (cars1.get(i).getVehicleY() == 800) {
+				changingCar = cars1.get(i);
+				if (i+1<cars1.size())
+					cars1.get(i).deleteObserver(cars1.get(i+1));
+				if (i>0) {
+					cars1.get(i-1).deleteObserver(cars1.get(i));
+					cars1.get(i-1).addObserver(cars1.get(i+1));
+				}
+				cars1.remove(i);
+				//need to set changingCar coordinates to the beginning of road 2.
+				cars2.add(changingCar);
+				break;
+			}
+		}
+		
+	}
+	
+	private void addCarsFromEast() {
+		Road road1 = mapBuilder.getRoadsWithName().get("EastWest");
+		Road road2 = mapBuilder.getRoadsWithName().get("Skyway");
+		ArrayList<Car> cars1 = road1.getCars();
+		ArrayList<Car> cars2 = road2.getCars();
+		for (Car car : cars1) {
+			if(car.getVehicleX()<=420) {
+				
+			}
+		}
+	}
+	
 	public static void main(String[] args){
 		launch(args);
 	}

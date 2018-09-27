@@ -1,10 +1,12 @@
 package edu.nd.sarec.railwaycrossing.model.infrastructure;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Vector;
 
 import edu.nd.sarec.railwaycrossing.model.infrastructure.gate.CrossingGate;
+import edu.nd.sarec.railwaycrossing.model.vehicles.Car;
 import edu.nd.sarec.railwaycrossing.model.vehicles.CarFactory;
 
 /**
@@ -22,6 +24,7 @@ public class Road {
 	Collection<CrossingGate> gates;
 	boolean clearEnds = false;
 	int roadSize;
+	private ArrayList<Car> cars;
 	
 	public Road(){}
 	
@@ -50,10 +53,15 @@ public class Road {
 	public void addCarFactory(){
 		if (carFactory == null) // We only allow one
 			carFactory = new CarFactory(direction, new Point(startX-roadSize/2,startY), gates);
+		this.cars = carFactory.getCars();
 	}
 	
 	public CarFactory getCarFactory(){
 		return carFactory;
+	}
+	
+	public ArrayList<Car> getCars() {
+		return cars;
 	}
 	
 	public int getStartX(){

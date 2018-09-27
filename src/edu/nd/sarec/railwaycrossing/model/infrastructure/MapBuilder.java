@@ -65,6 +65,9 @@ public class MapBuilder {
 		return roads.values();
 	}
 	
+	public HashMap<String, Road> getRoadsWithName() {
+		return roads;
+	}
 	public RailwayTracks getTrack(String name){
 		return tracks.get(name);
 	}
